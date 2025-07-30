@@ -1,0 +1,4 @@
+# Wokwi Library Dependencies
+Blynk
+DHT sensor library
+ESP32Servo

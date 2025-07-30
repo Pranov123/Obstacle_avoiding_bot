@@ -1,0 +1,335 @@
+{
+  "version": 1,
+  "author": "Obstacle Avoiding Robot with Telematics",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp32",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": -144,
+      "left": 96,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht22",
+      "top": -144,
+      "left": 288,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "mq135",
+      "top": -144,
+      "left": 432,
+      "attrs": {
+        "gasType": "CO2"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo",
+      "top": -240,
+      "left": 96,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dc-motor",
+      "id": "left_motor",
+      "top": 192,
+      "left": -144,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dc-motor",
+      "id": "right_motor",
+      "top": 192,
+      "left": 144,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "status_led",
+      "top": -240,
+      "left": 288,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "obstacle_led",
+      "top": -240,
+      "left": 336,
+      "attrs": {
+        "color": "yellow"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "danger_led",
+      "top": -240,
+      "left": 384,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -201.6,
+      "left": 288,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -201.6,
+      "left": 336,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -201.6,
+      "left": 384,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp32:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp32:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "ultrasonic:VCC",
+      "esp32:5V",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "ultrasonic:GND",
+      "esp32:GND.1",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "ultrasonic:TRIG",
+      "esp32:D5",
+      "blue",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "ultrasonic:ECHO",
+      "esp32:D18",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "dht22:VCC",
+      "esp32:3V3",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "dht22:GND",
+      "esp32:GND.2",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "dht22:SDA",
+      "esp32:D4",
+      "yellow",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "mq135:VCC",
+      "esp32:5V",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "mq135:GND",
+      "esp32:GND.2",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "mq135:AO",
+      "esp32:D34",
+      "orange",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "servo:V+",
+      "esp32:5V",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "servo:GND",
+      "esp32:GND.1",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "servo:PWM",
+      "esp32:D2",
+      "orange",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "left_motor:A",
+      "esp32:D19",
+      "blue",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "left_motor:B",
+      "esp32:D21",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "right_motor:A",
+      "esp32:D22",
+      "yellow",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "right_motor:B",
+      "esp32:D23",
+      "purple",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "r1:1",
+      "esp32:D25",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "r1:2",
+      "status_led:A",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "status_led:C",
+      "esp32:GND.1",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "r2:1",
+      "esp32:D26",
+      "yellow",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "r2:2",
+      "obstacle_led:A",
+      "yellow",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "obstacle_led:C",
+      "esp32:GND.1",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "r3:1",
+      "esp32:D27",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "r3:2",
+      "danger_led:A",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "danger_led:C",
+      "esp32:GND.1",
+      "black",
+      [
+        "v0"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}
